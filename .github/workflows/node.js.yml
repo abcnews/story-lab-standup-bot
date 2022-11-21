@@ -9,8 +9,6 @@ on:
   # - cron: "30 23,5 * * 0-4" # UTC shifted
     - cron: "*/5 * * * *"
   
-  workflow_dispatch:
-  
 
 jobs:
   build-and-choose:
