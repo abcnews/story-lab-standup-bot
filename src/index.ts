@@ -1,10 +1,9 @@
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config()
+import * as dotenv from "dotenv";
+dotenv.config();
+import axios from "axios";
+import { to as wrap } from "await-to-js";
 
-import axios from "axios"
 import { people } from "./people";
-
-console.log(axios)
 
 const URL = process.env.SLACK_URL;
 
@@ -18,13 +17,9 @@ const main = async () => {
 
   console.log(output);
 
-  axios.post(URL, output)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  const [postError, response] = await wrap(axios.post(URL, output));
+  if (postError) console.error(postError)
+  if (response) console.log(response.statusText)
 };
 
 main().catch((error) => {
