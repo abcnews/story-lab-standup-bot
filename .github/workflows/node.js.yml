@@ -33,5 +33,5 @@ jobs:
     - name: create env file
       run: |
         touch .env
-        echo ENGINE_API_KEY=${{ secrets.SLACK_URL }} >> .env
+        echo SLACK_URL=${{ secrets.SLACK_URL }} >> .env
     - run: npm run start
