@@ -4,9 +4,10 @@
 name: Show Who's running Story Lab standup
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "28 * * * *"
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/10 * * * *'
+
 
 jobs:
   build-and-choose:
