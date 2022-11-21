@@ -5,10 +5,7 @@ name: Node.js CI
 
 on:
   schedule:
-  # - cron: "30 9,15 * * 1-5" # Brisbane time
-  # - cron: "30 23,5 * * 0-4" # UTC shifted
     - cron: "*/5 * * * *"
-  
 
 jobs:
   build-and-choose:
