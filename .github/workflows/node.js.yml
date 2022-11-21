@@ -8,6 +8,8 @@ on:
   # - cron: "30 9,15 * * 1-5"
   - cron: "*/5 * * * 1-5"
   
+  workflow_dispatch:
+  
 
 jobs:
   build:
