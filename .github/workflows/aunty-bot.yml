@@ -6,7 +6,7 @@ name: Show Who's running Story Lab standup
 on:
   workflow_dispatch:
   schedule:
-  - cron: "*/5 * * * *"
+    - cron: "28 * * * *"
 
 jobs:
   build-and-choose:
