@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
 import { to as wrap } from "await-to-js";
+import retry from "async-retry";
 
 import { people } from "./people";
 
@@ -10,16 +11,20 @@ const URL = process.env.SLACK_URL;
 const main = async () => {
   const shuffledPeople: string[] = shuffle(people);
   const orderText: string = formatList(shuffledPeople);
-
   const text = "Who should run standup?: " + orderText;
-
   const output = { text };
 
-  console.log(output);
-
-  const [postError, response] = await wrap(axios.post(URL, output));
-  if (postError) console.error(postError)
-  if (response) console.log(response.statusText)
+  const [postError, response] = await wrap(
+    retry(
+      async (bail) => {
+        console.log("Posting output...")
+        return axios.post(URL, output);
+      },
+      { retries: 3 }
+    )
+  );
+  if (postError) console.error(postError);
+  if (response) console.log(response.statusText);
 };
 
 main().catch((error) => {
@@ -29,8 +34,8 @@ main().catch((error) => {
 // -- Functions
 
 function shuffle(array) {
-  let currentIndex = array.length,
-    randomIndex;
+  let currentIndex: number = array.length;
+  let randomIndex: number;
 
   // While there remain elements to shuffle.
   while (currentIndex != 0) {
