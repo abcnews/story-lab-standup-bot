@@ -16,8 +16,7 @@ const main = async () => {
 
   const [postError, response] = await wrap(
     retry(
-      async (bail) => {
-        console.log("Posting output...")
+      async bail => {
         return axios.post(URL, output);
       },
       { retries: 3 }
@@ -27,7 +26,7 @@ const main = async () => {
   if (response) console.log(response.statusText);
 };
 
-main().catch((error) => {
+main().catch(error => {
   console.error(error);
 });
 
