@@ -11,7 +11,7 @@ const URL = process.env.SLACK_URL;
 const main = async () => {
   const shuffledPeople: string[] = shuffle(people);
   const orderText: string = formatList(shuffledPeople);
-  const text = "Who should run standup?: " + orderText;
+  const text = "Morning standup time! Who's running it?: " + orderText;
   const output = { text };
 
   const [postError, response] = await wrap(
