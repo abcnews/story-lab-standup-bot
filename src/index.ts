@@ -3,7 +3,7 @@ dotenv.config();
 import axios from "axios";
 import { to as wrap } from "await-to-js";
 import retry from "async-retry";
-
+import { getJoinNowLink } from "./utils";
 import { people } from "./people";
 
 const URL = process.env.SLACK_URL;
@@ -11,7 +11,7 @@ const URL = process.env.SLACK_URL;
 const main = async () => {
   const shuffledPeople: string[] = shuffle(people);
   const orderText: string = formatList(shuffledPeople);
-  const text = "Morning standup time! Who's running it?: " + orderText;
+  const text = `*Morning standup time* 🎉 Who's running the meeting?\n${orderText}\n👉 ${getJoinNowLink()}`;
   const output = { text };
 
   const [postError, response] = await wrap(
