@@ -3,7 +3,6 @@ const people = [
   "Cris",
   "George",
   "Josh",
-  "Jules",
   "Margie",
   "Matt L",
   "Matt M",
