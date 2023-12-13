@@ -1,7 +1,6 @@
 const people = [
   "Ben",
   "Cris",
-  // "George",
   "Teresa",
   "Josh",
   "Margie",
