@@ -10,7 +10,7 @@ const people = [
   "Solua",
   "Tim",
   "Ash",
-  "Jules"
+  "Jules",
 ];
 
-export {people}
+export { people };

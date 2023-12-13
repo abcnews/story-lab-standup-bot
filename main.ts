@@ -9,9 +9,9 @@ import { people } from "./lib/people.ts";
 
 const CRON_EXPRESSION = "30 23 * * SUN,MON,TUE,WED,THU";
 
-const URL = env["SLACK_URL_TEST"]
-  ? env["SLACK_URL_TEST"]
-  : Deno.env.get("SLACK_URL_TEST");
+const URL = env["SLACK_URL"]
+  ? env["SLACK_URL"]
+  : Deno.env.get("SLACK_URL");
 
 const main = async () => {
   if (!URL) throw new Error("No SLACK_URL env variable set");
