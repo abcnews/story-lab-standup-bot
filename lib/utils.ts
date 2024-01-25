@@ -11,3 +11,36 @@ export function getJoinNowLink() {
 
   return isMonday() ? mondayLinkText : notMondayLinkText;
 }
+
+export function shuffle(array) {
+  let currentIndex: number = array.length;
+  let randomIndex: number;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
+export function formatList(list) {
+  const newList = list.map((item, index) => {
+    return `${index + 1}. ${item}`;
+  });
+
+  let listString = "";
+  newList.forEach((item, index) => {
+    listString = listString + item + (index < newList.length - 1 ? ", " : "");
+  });
+
+  return listString;
+}
