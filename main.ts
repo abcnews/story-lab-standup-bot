@@ -8,23 +8,23 @@ import { getJoinNowLink, shuffle, formatList, isMonday } from "./lib/utils.ts";
 import { people } from "./lib/people.ts";
 
 // Production
-// const CRON_EXPRESSION = "30 23 * * SUN,MON,TUE,WED,THU";
-// const URL = env["SLACK_URL"] ? env["SLACK_URL"] : Deno.env.get("SLACK_URL");
+const CRON_EXPRESSION = "30 23 * * SUN,MON,TUE,WED,THU";
+const URL = env["SLACK_URL"] ? env["SLACK_URL"] : Deno.env.get("SLACK_URL");
 
 // Testing
-const CRON_EXPRESSION = "* * * * SUN,MON,TUE,WED,THU";
-const URL = env["SLACK_URL_TEST"]
-  ? env["SLACK_URL_TEST"]
-  : Deno.env.get("SLACK_URL_TEST");
+// const CRON_EXPRESSION = "* * * * SUN,MON,TUE,WED,THU";
+// const URL = env["SLACK_URL_TEST"]
+//   ? env["SLACK_URL_TEST"]
+//   : Deno.env.get("SLACK_URL_TEST");
 
 const main = async () => {
   if (!URL) throw new Error("No SLACK_URL env variable set");
 
   // Bail out if Monday
-  // if (isMonday()) {
-  //   console.log("It's Monday, not running standup");
-  //   return;
-  // }
+  if (isMonday()) {
+    console.log("It's Monday, not running standup");
+    return;
+  }
 
   const shuffledPeople: string[] = shuffle(people);
   const orderText: string = formatList(shuffledPeople);
