@@ -1,6 +1,6 @@
 # Story Lab Standup (Aunty) bot
 
-Determine who will run Story Lab standups
+Determine who will run Story Lab standups.
 
 ## Development
 
