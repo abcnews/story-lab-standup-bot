@@ -9,7 +9,7 @@ import { people } from "./lib/people.ts";
 
 // Production
 const CRON_EXPRESSION = "30 23 * * SUN,MON,TUE,WED,THU";
-const URL = env["SLACK_URL_NEW"] ? env["SLACK_URL_NEW"] : Deno.env.get("SLACK_URL");
+const URL = env["SLACK_URL_NEW"] ? env["SLACK_URL_NEW"] : Deno.env.get("SLACK_URL_NEW");
 
 // Testing
 // const CRON_EXPRESSION = "* * * * SUN,MON,TUE,WED,THU";
