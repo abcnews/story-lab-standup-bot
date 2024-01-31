@@ -36,15 +36,8 @@ const main = async () => {
   if (response) console.log(response.statusText);
 };
 
-Deno.cron(
-  "Run main",
-  CRON_EXPRESSION,
-  () => {
-    main();
-  },
-  {
-    backoffSchedule: [1000, 5000, 10000],
-  }
-);
+Deno.cron("Run main", CRON_EXPRESSION, () => {
+  main();
+});
 
 Deno.serve(() => new Response("{ status: 'ok'}"));
