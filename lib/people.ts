@@ -8,7 +8,6 @@ const people = [
   "Matt M",
   "Simon",
   "Solua",
-  "Tim",
   "Ash",
   "Jules",
 ];
