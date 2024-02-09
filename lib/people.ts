@@ -4,12 +4,12 @@ const people = [
   "Teresa",
   "Josh",
   "Margie",
-  "Matt L",
-  "Matt M",
+  "Matt",
   "Simon",
   "Solua",
   "Ash",
   "Jules",
+  "Abby"
 ];
 
 export { people };
