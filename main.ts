@@ -27,5 +27,3 @@ const main = async () => {
 Deno.cron("Run main", CRON_EXPRESSION, () => {
   main();
 });
-
-// Deno.serve(() => new Response("{ status: 'ok'}"));
