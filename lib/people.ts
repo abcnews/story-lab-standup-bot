@@ -9,6 +9,7 @@ const people = [
   "Solua",
   "Ash",
   "Jules",
+  "Elissa"
 ];
 
 export { people };
