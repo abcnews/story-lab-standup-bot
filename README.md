@@ -8,8 +8,6 @@ On 2023-12-13 we switched over to run the daily standup bot on [Deno Deploy](htt
 
 All pushes to the `main` branch of this repository will now deploy to Deno Deploy and run automatically.
 
-We may, in future, merge the Deno version into `main`.
-
 ## Author
 
 [Joshua Byrd \<byrd.joshua@abc.net.au\>](mailto:byrd.joshua@abc.net.au)
