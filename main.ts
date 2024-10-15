@@ -1,11 +1,10 @@
 import axios from "npm:axios";
 import { to as wrap } from "npm:await-to-js";
-
 import { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
-const env = await load();
-
 import { getJoinNowLink, shuffle, formatList } from "./lib/utils.ts";
 import { people } from "./lib/people.ts";
+
+const env = await load();
 
 // Production
 const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
@@ -19,7 +18,10 @@ const main = async () => {
   const text = `*Morning standup time* 🎉 Who's running the meeting?\n${orderText}\n👉 ${getJoinNowLink()}`;
   const output = { text };
 
-  const [postError, response]: [any, any] = await wrap(axios.post(URL, output));
+  const [postError, response]: [
+    Error | null,
+    { statusText: string } | undefined
+  ] = await wrap(axios.post(URL, output));
   if (postError) throw postError;
   if (response) console.log(response.statusText);
 };

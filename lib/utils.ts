@@ -1,6 +1,11 @@
-export function isMonday() {
-  const today = new Date();
-  return today.getDay() === 1;
+function isMonday() {
+  const now = new Date();
+  const brisbaneOffset = 10 * 60; // Brisbane is UTC+10, convert to minutes
+  const localOffset = now.getTimezoneOffset(); // Local timezone offset in minutes
+  const brisbaneTime = new Date(
+    now.getTime() + (brisbaneOffset + localOffset) * 60000
+  ); // Adjust to Brisbane time
+  return brisbaneTime.getDay() === 1;
 }
 
 export function getJoinNowLink() {
