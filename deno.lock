@@ -1,7 +1,7 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@phocks/isit@~0.1.1": "0.1.1",
+    "jsr:@phocks/isit@~0.1.8": "0.1.8",
     "jsr:@std/assert@*": "1.0.6",
     "jsr:@std/internal@^1.0.4": "1.0.4",
     "npm:async-retry@*": "1.3.3",
@@ -9,8 +9,8 @@
     "npm:axios@*": "1.6.2"
   },
   "jsr": {
-    "@phocks/isit@0.1.1": {
-      "integrity": "394964dc8012c4e800d16aa14453d4f8894ca0e7a22b5b27c0889c1144c2a5de"
+    "@phocks/isit@0.1.8": {
+      "integrity": "7388638dd818c86092d62a7fa4fa4e5d8f5186fc24756837fe14d812a0651f1e"
     },
     "@std/assert@1.0.6": {
       "integrity": "1904c05806a25d94fe791d6d883b685c9e2dcd60e4f9fc30f4fc5cf010c72207",
@@ -84,7 +84,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@phocks/isit@~0.1.1"
+      "jsr:@phocks/isit@~0.1.8"
     ]
   }
 }
