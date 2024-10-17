@@ -1,6 +1,7 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@phocks/isit@~0.1.1": "0.1.1",
     "jsr:@std/assert@*": "1.0.6",
     "jsr:@std/internal@^1.0.4": "1.0.4",
     "npm:async-retry@*": "1.3.3",
@@ -8,6 +9,9 @@
     "npm:axios@*": "1.6.2"
   },
   "jsr": {
+    "@phocks/isit@0.1.1": {
+      "integrity": "394964dc8012c4e800d16aa14453d4f8894ca0e7a22b5b27c0889c1144c2a5de"
+    },
     "@std/assert@1.0.6": {
       "integrity": "1904c05806a25d94fe791d6d883b685c9e2dcd60e4f9fc30f4fc5cf010c72207",
       "dependencies": [
@@ -77,5 +81,10 @@
   },
   "remote": {
     "https://deno.land/std@0.208.0/dotenv/mod.ts": "039468f5c87d39b69d7ca6c3d68ebca82f206ec0ff5e011d48205eea292ea5a6"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@phocks/isit@~0.1.1"
+    ]
   }
 }
