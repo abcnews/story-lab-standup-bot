@@ -2,7 +2,7 @@ import axios from "npm:axios";
 import { to as wrap } from "npm:await-to-js";
 import { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
 import { getJoinNowLink, shuffle, formatList } from "./lib/utils.ts";
-import { people } from "./lib/people.ts";
+import { people } from "~/lib/people.ts";
 
 const env = await load();
 

@@ -11,5 +11,8 @@
   "tasks": {
     "start": "deno run --allow-net --allow-read --allow-env --unstable-cron main.ts"
   },
-  "imports": { "@phocks/isit": "jsr:@phocks/isit@^0.1.8" }
+  "imports": {
+    "@phocks/isit": "jsr:@phocks/isit@^0.1.8",
+    "~/": "./"
+  }
 }

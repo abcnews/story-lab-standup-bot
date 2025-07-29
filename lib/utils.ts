@@ -31,7 +31,7 @@ export function shuffle(array: string[]): string[] {
   return array;
 }
 
-export function formatList(list) {
+export function formatList(list: string[]) {
   const newList = list.map((item, index) => {
     return `${index + 1}. ${item}`;
   });
