@@ -1,4 +1,6 @@
 import { isit, Days } from "@phocks/isit";
+import axios from "axios";
+import { to as wrap } from "await-to-js";
 
 export function getJoinNowLink() {
   const mondayLinkText =
@@ -43,3 +45,26 @@ export function formatList(list: string[]) {
 
   return listString;
 }
+
+// const QUOTES = [
+//   "The best way to get started is to quit talking and begin doing. — Walt Disney",
+//   "Success is not final, failure is not fatal. — Winston Churchill",
+//   "The only way to do great work is to love what you do. — Steve Jobs",
+//   "Don't watch the clock; do what it does. Keep going. — Sam Levenson",
+//   "The future belongs to those who believe in the beauty of their dreams. — Eleanor Roosevelt",
+// ];
+
+// export const getRandomQuote = (): string => {
+//   const randomIndex = Math.floor(Math.random() * QUOTES.length);
+//   return `_${QUOTES[randomIndex]}_`;
+// };
+
+export const getRandomQuote = async (): Promise<string> => {
+  const [error, response]: [Error | null, { data: Array<{ q: string; a: string }> } | undefined] = 
+    await wrap(axios.get("https://zenquotes.io/api/random"));
+  
+  if (error || !response?.data?.[0]) return "";
+  
+  const { q, a } = response.data[0];
+  return `_"${q}" — ${a}_`;
+};
