@@ -1,13 +1,20 @@
-import axios from "npm:axios";
-import { to as wrap } from "npm:await-to-js";
-import { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
+import axios from "axios";
+import { to as wrap } from "await-to-js";
+import { load } from "@std/dotenv";
 import { getJoinNowLink, shuffle, formatList } from "./lib/utils.ts";
 import { people } from "~/lib/people.ts";
 
 const env = await load();
 
-// Production
-const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
+/**
+ * Production (set time) - offset by GMT
+ * NOTE: Looks like we're no longer doing Monday (BNE Time) standups
+ */ 
+// const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
+
+// Development (every minute)
+const CRON_EXPRESSION = "* * * * MON,TUE,WED,THU";
+
 const URL = env["SLACK_URL"] ? env["SLACK_URL"] : Deno.env.get("SLACK_URL");
 
 const main = async () => {
