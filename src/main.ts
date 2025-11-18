@@ -6,8 +6,8 @@ import {
   shuffle,
   formatList,
   getRandomQuote,
-} from "./lib/utils.ts";
-import { people } from "~/lib/people.ts";
+} from "~/src/lib/utils.ts";
+import { people } from "~/src/lib/people.ts";
 
 const env = await load();
 
@@ -17,10 +17,10 @@ const SHOULD_INCLUDE_QUOTE = false;
  * Production (set time) - offset by GMT
  * NOTE: Looks like we're no longer doing Monday (BNE Time) standups
  */
-const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
+// const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
 
 // Development (every minute)
-// const CRON_EXPRESSION = "* * * * MON,TUE,WED,THU";
+const CRON_EXPRESSION = "* * * * MON,TUE,WED,THU";
 
 const URL = env["SLACK_URL"] ? env["SLACK_URL"] : Deno.env.get("SLACK_URL");
 
