@@ -5,11 +5,11 @@
   "deploy": {
     "project": "f9405a8a-75c7-42e8-badd-5308e4129262",
     "exclude": [],
-    "include": [],
-    "entrypoint": "./src/main.ts"
+    "include": ["src/main.ts"],
+    "entrypoint": "src/main.ts"
   },
   "tasks": {
-    "start": "deno run --allow-net --allow-read --allow-env --unstable-cron ./src/main.ts",
+    "start": "deno run --allow-net --allow-read --allow-env --unstable-cron src/main.ts",
     "test": "deno test --allow-net"
   },
   "imports": {
