@@ -4,9 +4,6 @@ import { to as wrap } from "await-to-js";
 import { parseCsv } from "~/src/lib/papa.ts";
 import { type ParseError, type ParseResult } from "papaparse";
 
-const QUOTES_SPREADSHEET_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQoUhnrBaWZCsG16Fj4Kx7Q4_JC3WP3VokhT9EwpPxlGldvoq-B0jCExV3G0UEteOXes7qAe86E9ZWA/pub?output=csv";
-
 interface GetJoinNowLinkOptions {
   dateOverride?: Date;
   offsetHours?: number;
@@ -65,26 +62,38 @@ export function formatList(list: string[]) {
   return listString;
 }
 
+// const QUOTES = [
+//   "The best way to get started is to quit talking and begin doing. — Walt Disney",
+//   "Success is not final, failure is not fatal. — Winston Churchill",
+//   "The only way to do great work is to love what you do. — Steve Jobs",
+//   "Don't watch the clock; do what it does. Keep going. — Sam Levenson",
+//   "The future belongs to those who believe in the beauty of their dreams. — Eleanor Roosevelt",
+// ];
+
+// export const getRandomQuote = (): string => {
+//   const randomIndex = Math.floor(Math.random() * QUOTES.length);
+//   return `_${QUOTES[randomIndex]}_`;
+// };
+
+export const getRandomQuote = async (): Promise<string> => {
+  const [error, response]: [
+    Error | null,
+    { data: Array<{ q: string; a: string }> } | undefined,
+  ] = await wrap(axios.get("https://zenquotes.io/api/random"));
+
+  if (error || !response) return "";
+
+  const randomIndex = Math.floor(Math.random() * response.data.length);
+
+  if (error || !response?.data?.[randomIndex]) return "";
+
+  const { q, a } = response.data[randomIndex];
+  return `_"${q}" — ${a}_`;
+};
+
 export const fetchQuotes = async (
   spreadsheetUrl: string,
 ): Promise<{ data: Array<{ QUOTE: string; AUTHOR: string }> }> => {
   const result = await parseCsv(spreadsheetUrl);
   return result;
-};
-
-export const getRandomQuote = async (): Promise<string> => {
-  // const [error, response]: [
-  //   Error | null,
-  //   { data: Array<{ q: string; a: string }> } | undefined,
-  // ] = await wrap(axios.get("https://zenquotes.io/api/random"));
-
-  const [error, response]: [
-    Error | null,
-    { data: Array<{ QUOTE: string; AUTHOR: string }> } | undefined,
-  ] = await wrap(fetchQuotes(QUOTES_SPREADSHEET_URL));
-
-  if (error || !response?.data?.[0]) return "";
-
-  const { QUOTE, AUTHOR } = response.data[0];
-  return `_"${QUOTE}" — ${AUTHOR}_`;
 };
