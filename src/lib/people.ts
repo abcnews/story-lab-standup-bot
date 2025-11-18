@@ -6,10 +6,10 @@ const people = [
   "Margie",
   "Matt",
   "Simon",
-  "Solua",
   "Ash",
   "Jules",
-  "George"
+  "George",
+  "Sohani"
 ];
 
 export { people };
