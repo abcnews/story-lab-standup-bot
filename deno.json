@@ -9,7 +9,7 @@
     "entrypoint": "src/main.ts"
   },
   "tasks": {
-    "start": "deno run --allow-net --allow-read --allow-env --unstable-cron ./src/main.ts"
+    "start": "deno run --allow-net --allow-read --allow-env --unstable-cron src/main.ts"
   },
   "imports": {
     "@phocks/isit": "jsr:@phocks/isit@^0.2.1",
