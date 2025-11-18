@@ -96,7 +96,7 @@ export const getRandomQuote = async (): Promise<string> => {
   if (error || !response?.data?.[randomIndex]) return "";
 
   const { QUOTE, AUTHOR } = response.data[randomIndex];
-  return `_"${QUOTE}" — ${AUTHOR}_`;
+  return `_“${QUOTE}” — ${AUTHOR}_`;
 };
 
 export const fetchQuotes = async (

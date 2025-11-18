@@ -51,7 +51,9 @@ const main = async () => {
     { statusText: string } | undefined,
   ] = await wrap(axios.post(SLACK_URL, output));
   if (postError) throw postError;
-  if (response) console.log(response.statusText);
+  if (response) {
+    console.log(response.statusText, `Posted to Slack at ${new Date()}`);
+  }
 };
 
 Deno.cron("Run main", cronExpression, () => {
