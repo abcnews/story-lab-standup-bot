@@ -1,6 +1,8 @@
 import { Days, isit } from "@phocks/isit";
 import axios from "axios";
 import { to as wrap } from "await-to-js";
+import { parseCsv } from "~/src/lib/papa.ts";
+import { type ParseError, type ParseResult } from "papaparse";
 
 interface GetJoinNowLinkOptions {
   dateOverride?: Date;
@@ -83,4 +85,9 @@ export const getRandomQuote = async (): Promise<string> => {
 
   const { q, a } = response.data[0];
   return `_"${q}" — ${a}_`;
+};
+
+export const fetchQuotes = async (spreadsheetUrl: string): Promise<{ data: Array<{ QUOTE: string; AUTHOR: string }> }> => {
+  const result = await parseCsv(spreadsheetUrl);
+  return result;
 };

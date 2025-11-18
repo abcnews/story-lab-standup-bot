@@ -17,6 +17,7 @@
     "@std/dotenv": "jsr:@std/dotenv@^0.225.5",
     "await-to-js": "npm:await-to-js@^3.0.0",
     "axios": "npm:axios@^1.13.2",
+    "papaparse": "npm:papaparse@^5.5.3",
     "~/": "./"
   }
 }

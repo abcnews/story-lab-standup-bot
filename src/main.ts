@@ -2,6 +2,7 @@ import axios from "axios";
 import { to as wrap } from "await-to-js";
 import { load } from "@std/dotenv";
 import {
+  fetchQuotes,
   formatList,
   getJoinNowLink,
   getRandomQuote,
@@ -18,6 +19,8 @@ const SLACK_URL = env["SLACK_URL"]
 const PRODUCTION_ENV = env["PRODUCTION_ENV"]
   ? env["PRODUCTION_ENV"]
   : Deno.env.get("PRODUCTION_ENV");
+const QUOTES_SPREADSHEET_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQoUhnrBaWZCsG16Fj4Kx7Q4_JC3WP3VokhT9EwpPxlGldvoq-B0jCExV3G0UEteOXes7qAe86E9ZWA/pub?output=csv";
 
 /**
  * Production (set time) - offset by GMT
@@ -53,6 +56,8 @@ const main = async () => {
   if (postError) throw postError;
   if (response) console.log(response.statusText);
 };
+
+// fetchQuotes(QUOTES_SPREADSHEET_URL).then(({ data }) => console.log(data));
 
 Deno.cron("Run main", cronExpression, () => {
   main();
