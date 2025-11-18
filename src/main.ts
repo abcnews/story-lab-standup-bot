@@ -57,8 +57,6 @@ const main = async () => {
   if (response) console.log(response.statusText);
 };
 
-// fetchQuotes(QUOTES_SPREADSHEET_URL).then(({ data }) => console.log(data));
-
 Deno.cron("Run main", cronExpression, () => {
   main();
 });
