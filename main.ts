@@ -9,15 +9,11 @@ import {
 } from "~/src/lib/utils.ts";
 import { people } from "~/src/lib/people.ts";
 
-const env = await load();
-
-const SHOULD_INCLUDE_QUOTE = false;
-const SLACK_URL = env["SLACK_URL"]
-  ? env["SLACK_URL"]
-  : Deno.env.get("SLACK_URL");
-const PRODUCTION_ENV = env["PRODUCTION_ENV"]
-  ? env["PRODUCTION_ENV"]
-  : Deno.env.get("PRODUCTION_ENV");
+import {
+  PRODUCTION_ENV,
+  SHOULD_INCLUDE_QUOTE,
+  SLACK_URL,
+} from "~/src/lib/constants.ts";
 
 /**
  * Production (set time) - offset by GMT
