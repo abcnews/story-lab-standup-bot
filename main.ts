@@ -1,57 +1,15 @@
-import axios from "axios";
-import { to as wrap } from "await-to-js";
-import { load } from "@std/dotenv";
-import {
-  formatList,
-  getJoinNowLink,
-  getRandomQuote,
-  shuffle,
-} from "~/src/lib/utils.ts";
-import { people } from "~/src/lib/people.ts";
+import { sendUpdate } from "~/src/lib/sendUpdate.ts";
 
 import {
+  CRON_EXPRESSION,
+  CRON_EXPRESSION_DEV,
   PRODUCTION_ENV,
-  SHOULD_INCLUDE_QUOTE,
-  SLACK_URL,
 } from "~/src/lib/constants.ts";
-
-/**
- * Production (set time) - offset by GMT
- * NOTE: Looks like we're no longer doing Monday (BNE Time) standups
- */
-const CRON_EXPRESSION = "30 23 * * MON,TUE,WED,THU";
-const CRON_EXPRESSION_DEV = "* * * * MON,TUE,WED,THU";
 
 const cronExpression = PRODUCTION_ENV === "production"
   ? CRON_EXPRESSION
   : CRON_EXPRESSION_DEV;
 
-const main = async () => {
-  if (!SLACK_URL) throw new Error("No SLACK_URL env variable set");
-
-  const shuffledPeople: string[] = shuffle(people);
-  const orderText: string = formatList(shuffledPeople);
-
-  const [quoteError, quote]: [Error | null, string | undefined] = await wrap(
-    getRandomQuote(),
-  );
-  if (quoteError) console.error("Failed to fetch quote:", quoteError);
-
-  const quoteSection = SHOULD_INCLUDE_QUOTE && quote ? `\n${quote}` : "";
-  const text =
-    `*Morning standup time* 🎉 Who's running the meeting?\n${orderText}${quoteSection}\n👉 ${getJoinNowLink()}`;
-  const output = { text };
-
-  const [postError, response]: [
-    Error | null,
-    { statusText: string } | undefined,
-  ] = await wrap(axios.post(SLACK_URL, output));
-  if (postError) throw postError;
-  if (response) {
-    console.log(response.statusText, `Posted to Slack at ${new Date()}`);
-  }
-};
-
 Deno.cron("Run main", cronExpression, () => {
-  main();
+  sendUpdate();
 });

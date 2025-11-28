@@ -64,25 +64,23 @@ export function formatList(list: string[]) {
   return listString;
 }
 
-export const getRandomQuote = async (): Promise<string> => {
+export const fetchMessages = async (
+  spreadsheetUrl: string,
+): Promise<{ data: Array<{ MESSAGE: string }> }> => {
+  const result = await parseCsv(spreadsheetUrl);
+  return result;
+};
+
+export const getRandomMessage = async (): Promise<string> => {
   const [error, response]: [
     Error | null,
-    { data: Array<{ QUOTE: string; AUTHOR: string }> } | undefined,
-  ] = await wrap(fetchQuotes(QUOTES_SPREADSHEET_URL));
-
+    { data: Array<{ MESSAGE: string }> } | undefined,
+  ] = await wrap(fetchMessages(QUOTES_SPREADSHEET_URL));
   if (error || !response) return "";
 
   const randomIndex = Math.floor(Math.random() * response.data.length);
-
   if (error || !response?.data?.[randomIndex]) return "";
 
-  const { QUOTE, AUTHOR } = response.data[randomIndex];
-  return `_“${QUOTE}” — ${AUTHOR}_`;
-};
-
-export const fetchQuotes = async (
-  spreadsheetUrl: string,
-): Promise<{ data: Array<{ QUOTE: string; AUTHOR: string }> }> => {
-  const result = await parseCsv(spreadsheetUrl);
-  return result;
+  const { MESSAGE } = response.data[randomIndex];
+  return MESSAGE;
 };
