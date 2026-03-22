@@ -13,3 +13,7 @@ const cronExpression = PRODUCTION_ENV === "production"
 Deno.cron("Run main", cronExpression, () => {
   sendUpdate();
 });
+
+Deno.serve((_req) => {
+  return Response.json({ message: "Hello, World!" });
+});
