@@ -15,9 +15,5 @@ export const PRODUCTION_ENV = env["PRODUCTION_ENV"]
 /**
  * Production (set time) - offset by GMT
  */
-export const CRON_EXPRESSION = {
-  minute: { exact: 30 },
-  hour: { exact: 23 },
-  dayOfWeek: { exact: [0, 1, 2, 3, 4] },
-};
+export const CRON_EXPRESSION = "30 23 * * 0,1,2,3,4";
 export const CRON_EXPRESSION_DEV = "* * * * *";
