@@ -18,6 +18,6 @@ export const PRODUCTION_ENV = env["PRODUCTION_ENV"]
 export const CRON_EXPRESSION = {
   minute: { exact: 30 },
   hour: { exact: 23 },
-  dayOfWeek: { start: 0, end: 4 },
+  dayOfWeek: { exact: [0, 1, 2, 3, 4] },
 };
 export const CRON_EXPRESSION_DEV = "* * * * *";
