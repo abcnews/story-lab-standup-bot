@@ -1,4 +1,4 @@
-import { fetchQuotes, getJoinNowLink } from "~/src/lib/utils.ts";
+import { fetchMessages, getJoinNowLink } from "~/src/lib/utils.ts";
 import { assertEquals } from "@std/assert";
 
 const QUOTES_SPREADSHEET_URL =
@@ -18,6 +18,6 @@ Deno.test("Get join now link", () => {
 });
 
 Deno.test("Fetch quotes", async () => {
-  const result = await fetchQuotes(QUOTES_SPREADSHEET_URL);
+  const result = await fetchMessages(QUOTES_SPREADSHEET_URL);
   assertEquals(result.data.length > 1, true);
 });
