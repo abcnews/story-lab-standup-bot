@@ -14,7 +14,7 @@ const people = [
   "Jess",
   "Jarrod",
   "Lincoln",
-  "Ahmed"
+  "Brianna"
 ];
 
 export { people };
