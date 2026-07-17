@@ -1,4 +1,8 @@
 import { sendUpdate } from "~/src/lib/sendUpdate.ts";
+import { add } from "./lib/rs_lib.js";
+
+// Just a test
+console.log(add(1, 1));
 
 import {
   CRON_EXPRESSION,

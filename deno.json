@@ -10,7 +10,8 @@
   },
   "tasks": {
     "start": "deno run --allow-net --allow-read --allow-env --unstable-cron main.ts",
-    "test": "deno test --allow-net"
+    "test": "deno test --allow-net",
+    "wasmbuild": "deno run -A jsr:@deno/wasmbuild@0.21.1"
   },
   "imports": {
     "@phocks/isit": "jsr:@phocks/isit@^0.2.1",
