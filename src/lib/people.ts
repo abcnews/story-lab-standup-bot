@@ -12,7 +12,8 @@ const people = [
   "Lincoln",
   "Ben Sveen",
   "Emma",
-  "Hanan"
+  "Hanan",
+  "Madi"
 ];
 
 export { people };
