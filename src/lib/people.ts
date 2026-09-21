@@ -1,6 +1,6 @@
 const people = [
   "Josh",
-  "Ben Spraggon",
+  "Ben",
   "Cris",
   "Teresa",
   "Margie",
@@ -10,7 +10,6 @@ const people = [
   "Veronica",
   "Jess",
   "Lincoln",
-  "Ben Sveen",
   "Emma",
   "Hanan",
   "Madi"
