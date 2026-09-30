@@ -11,7 +11,7 @@ const people = [
   "Jess",
   "Lincoln",
   "Emma",
-  "Hanan",
+  "Zena",
   "Madi"
 ];
 
