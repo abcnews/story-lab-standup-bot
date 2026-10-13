@@ -8,6 +8,12 @@ On 2023-12-13 we switched over to run the daily standup bot on [Deno Deploy](htt
 
 All pushes to the `main` branch of this repository will now deploy to Deno Deploy and run automatically.
 
+## Migration
+
+On 2026-10-13 we started work migrating to Cloudflare Workers due to [Deno being bought by Cloudflare](https://deno.com/blog/cloudflare).
+
+Initially the `cloudflare-workers` branch will deploy to Cloudflare Workers.
+
 ## People
 
 Change this list of people on change: https://github.com/abcnews/story-lab-standup-bot/blob/main/src/lib/people.ts
